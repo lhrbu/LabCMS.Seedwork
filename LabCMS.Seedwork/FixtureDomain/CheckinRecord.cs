@@ -1,6 +1,8 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
+using LabCMS.Seedwork.Converters;
 
 namespace LabCMS.Seedwork.FixtureDomain
 {
@@ -21,12 +23,15 @@ namespace LabCMS.Seedwork.FixtureDomain
         public int FixtureNo { get; init; }
         public Fixture? Fixture { get; set; }
 
+        [JsonConverter(typeof(JsonConverters.DateTimeOffsetJsonConverter))]
         public DateTimeOffset CheckinDate { get; set; }
 
         [ForeignKey(nameof(FixtureRoomApprover))]
         public string? FixtureRoomApproverId { get; set; }
         public Role? FixtureRoomApprover { get; set; }
         public CheckRecordStatus Status { get; set; } = CheckRecordStatus.Initial;
+
+        [JsonConverter(typeof(JsonConverters.DateTimeOffsetJsonConverter))]
         public DateTimeOffset TimeStamp { get; init; } = DateTimeOffset.Now;
        
     }
