@@ -68,6 +68,23 @@ namespace LabCMS.Seedwork
             modelBuilder.Entity<UsageRecord>()
                 .Property(item => item.EndTime)
                 .HasConversion(EFCoreValueConverters.DataTimeOffsetUtcSecondsConverter);
+            
+            modelBuilder.Entity<CheckoutRecord>()
+                .Property(item=>item.CheckoutDate)
+                .HasConversion(EFCoreValueConverters.DataTimeOffsetUtcSecondsConverter);
+            modelBuilder.Entity<CheckoutRecord>()
+                .Property(item=>item.PlanndReturnDate)
+                .HasConversion(EFCoreValueConverters.DataTimeOffsetUtcSecondsConverter);
+            modelBuilder.Entity<CheckoutRecord>()
+                .Property(item=>item.TimeStamp)
+                .HasConversion(EFCoreValueConverters.DataTimeOffsetUtcSecondsConverter);
+
+            modelBuilder.Entity<CheckinRecord>()
+                .Property(item=>item.CheckinDate)
+                .HasConversion(EFCoreValueConverters.DataTimeOffsetUtcSecondsConverter);
+            modelBuilder.Entity<CheckinRecord>()
+                .Property(item=>item.TimeStamp)
+                .HasConversion(EFCoreValueConverters.DataTimeOffsetUtcSecondsConverter);
         }
     
     }
